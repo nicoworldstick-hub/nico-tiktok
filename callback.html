@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nico Uploader TikTok - Authorization</title></head>
+<body style="font-family:sans-serif;max-width:720px;margin:2rem auto;padding:0 1rem;line-height:1.5">
+<h1>Nico Uploader TikTok</h1>
+<p>Personal tool of the owner of the animated series "Nico Last Light". This page only shows the authorization result so the owner can copy it into their own local tool.</p>
+<div id="out"></div>
+<script>
+  var p = new URLSearchParams(location.search), out = document.getElementById("out");
+  function row(k, v) {
+    var d = document.createElement("p"); d.textContent = k + ": ";
+    var c = document.createElement("code"); c.textContent = v; c.style.wordBreak = "break-all";
+    d.appendChild(c); out.appendChild(d);
+  }
+  if (p.get("code")) { row("code", p.get("code")); if (p.get("state")) row("state", p.get("state")); }
+  else if (p.get("error")) { row("error", p.get("error")); if (p.get("error_description")) row("details", p.get("error_description")); }
+  else { out.textContent = "No authorization data in this address."; }
+</script>
+</body></html>
